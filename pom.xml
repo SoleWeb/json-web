@@ -146,8 +146,8 @@
     </developers>
 
     <scm>
-        <connection></connection>
-        <developerConnection></developerConnection>
+        <connection>scm:git:git://github.com/SoleWeb/json-web.git</connection>
+        <developerConnection>scm:git:ssh://github.com/SoleWeb/json-web.git</developerConnection>
         <url>https://github.com/SoleWeb/json-web</url>
     </scm>
 </project>
