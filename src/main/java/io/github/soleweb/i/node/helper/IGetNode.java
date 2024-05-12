@@ -18,7 +18,6 @@ public interface IGetNode {
 
     /**
      * Method: getValueFromJson
-     *
      * @param jsonNode -> JsonNode, the JSON node from which the value needs to be extracted
      * @param path -> String, the path to the desired value
      * @return String, the value extracted from the JSON node
@@ -26,11 +25,13 @@ public interface IGetNode {
     String getValueFromJson(JsonNode jsonNode, String path);
 
     /**
-     * Method: getDefaultValueFromJsonForFieldType
+     * Method: getDefaultValueFromJsonForFieldType <p>
+     * Description:
+     * Retrieves a default value from the JSON node for the specified field type.
      *
      * @param jsonNode -> JsonNode, the JSON node from which the default value needs to be extracted
      * @param path -> String, the path to the desired value
-     * @param fieldType -> Class<?>, the type of the field for which the default value is required
+     * @param fieldType -> Class of any Type(required DataType), the type of the field for which the default value is required
      * @return String, the default value extracted from the JSON node for the specified field type
      */
     String getDefaultValueFromJsonForFieldType(JsonNode jsonNode, String path, Class<?> fieldType);
