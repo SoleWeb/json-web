@@ -1,4 +1,4 @@
-package com.soleweb.exception;
+package io.github.soleweb.exception;
 
 /**
  * Exception class: FieldNotFoundException

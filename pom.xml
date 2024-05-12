@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.soleweb</groupId>
+    <groupId>io.github.soleweb</groupId>
     <artifactId>json-web</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.0.2</version>
     <packaging>jar</packaging>
 
     <name>json-web</name>
@@ -20,12 +20,11 @@
         </license>
     </licenses>
 
-    <properties>
-        <maven.compiler.source>19</maven.compiler.source>
-        <maven.compiler.target>19</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <gpg.keyname>0xD74A593B</gpg.keyname>
-    </properties>
+    <scm>
+        <connection>scm:git:git://github.com/SoleWeb/json-web.git</connection>
+        <developerConnection>scm:git:ssh://github.com/SoleWeb/json-web.git</developerConnection>
+        <url>https://github.com/SoleWeb/json-web</url>
+    </scm>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
@@ -34,15 +33,8 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.17.0</version>
         </dependency>
-
     </dependencies>
 
-    <!--    <distributionManagement>-->
-    <!--        <snapshotRepository>-->
-    <!--            <id>ossrh</id>-->
-    <!--            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>-->
-    <!--        </snapshotRepository>-->
-    <!--    </distributionManagement>-->
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
@@ -54,8 +46,37 @@
         </repository>
     </distributionManagement>
 
+    <developers>
+        <developer>
+            <name>M. Danish</name>
+            <email>solewebio@gmal.com</email>
+            <organization>io.github.soleweb</organization>
+            <organizationUrl>https://github.com/SoleWeb/</organizationUrl>
+        </developer>
+    </developers>
+
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <tokenAuth>true</tokenAuth>
+                    <autoPublish>true</autoPublish>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
@@ -88,28 +109,13 @@
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>jar</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
-
-            <!--            <plugin>-->
-            <!--                <groupId>org.apache.maven.plugins</groupId>-->
-            <!--                <artifactId>maven-gpg-plugin</artifactId>-->
-            <!--                <version>1.5</version>-->
-            <!--                <executions>-->
-            <!--                    <execution>-->
-            <!--                        <id>sign-artifacts</id>-->
-            <!--                        <phase>verify</phase>-->
-            <!--                        <goals>-->
-            <!--                            <goal>sign</goal>-->
-            <!--                        </goals>-->
-            <!--                    </execution>-->
-            <!--                </executions>-->
-            <!--            </plugin>-->
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
@@ -123,31 +129,21 @@
                         </goals>
                         <configuration>
                             <keyname>${gpg.keyname}</keyname>
-                            <!--                            <passphraseServerId>${gpg.keyname}</passphraseServerId>-->
                             <gpgArguments>
                                 <arg>--pinentry-mode</arg>
                                 <arg>loopback</arg>
                             </gpgArguments>
                         </configuration>
-
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
 
-    <developers>
-        <developer>
-            <name>M. Danish</name>
-            <email>solewebio@gmal.com</email>
-            <organization>io.github.soleweb</organization>
-            <organizationUrl>https://github.com/SoleWeb/</organizationUrl>
-        </developer>
-    </developers>
-
-    <scm>
-        <connection>scm:git:git://github.com/SoleWeb/json-web.git</connection>
-        <developerConnection>scm:git:ssh://github.com/SoleWeb/json-web.git</developerConnection>
-        <url>https://github.com/SoleWeb/json-web</url>
-    </scm>
+    <properties>
+        <java.version>1.8</java.version>
+        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <central-publishing-maven-plugin.version>0.3.0</central-publishing-maven-plugin.version>
+    </properties>
 </project>

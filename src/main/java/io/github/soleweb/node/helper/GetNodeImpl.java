@@ -1,10 +1,10 @@
-package com.soleweb.node.helper;
+package io.github.soleweb.node.helper;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.soleweb.exception.FieldNotFoundException;
-import com.soleweb.i.node.helper.IGetNode;
+import io.github.soleweb.exception.FieldNotFoundException;
+import io.github.soleweb.i.node.helper.IGetNode;
 
 /**
  * Class: GetNodeImpl <p>
@@ -24,9 +24,9 @@ public class GetNodeImpl implements IGetNode {
      * Description:
      * Retrieves a default value from the JSON node for the specified field type.
      *
-     * @param jsonNode  -> JsonNode, the JSON node from which the default value needs to be extracted
-     * @param path      -> String, the path to the desired value
-     * @param fieldType -> Class of any Type(required DataType), the type of the field for which the default value is required
+     * @param jsonNode   JsonNode, the JSON node from which the default value needs to be extracted
+     * @param path       String, the path to the desired value
+     * @param fieldType  Class of any Type(required DataType), the type of the field for which the default value is required
      * @return String, the default value extracted from the JSON node for the specified field type
      */
     public String getDefaultValueFromJsonForFieldType(JsonNode jsonNode, String path, Class<?> fieldType) {
@@ -47,8 +47,8 @@ public class GetNodeImpl implements IGetNode {
      * Description:
      * Retrieves a value from the JSON node based on the specified path.
      *
-     * @param jsonNode -> JsonNode, the JSON node from which the value needs to be extracted
-     * @param path     -> String, the path to the desired value
+     * @param jsonNode  JsonNode, the JSON node from which the value needs to be extracted
+     * @param path      String, the path to the desired value
      * @return String, the value extracted from the JSON node
      */
     public String getValueFromJson(JsonNode jsonNode, String path) {
@@ -66,9 +66,9 @@ public class GetNodeImpl implements IGetNode {
      * Description:
      * Constructs a JSON array of objects based on the provided keys and data.
      *
-     * @param json -> ObjectNode, the JSON node in which the array needs to be added
-     * @param keys -> String[], comma-separated key structure for each element, where index 0 always represents the root key
-     * @param data -> String[], array of data elements, where each iteration is separated by '|' and elements within an iteration are separated by comma
+     * @param json  ObjectNode, the JSON node in which the array needs to be added
+     * @param keys  String[], comma-separated key structure for each element, where index 0 always represents the root key
+     * @param data  String[], array of data elements, where each iteration is separated by '|' and elements within an iteration are separated by comma
      * @return ObjectNode, the JSON array of objects constructed based on the provided keys and data
      */
     public ObjectNode constructJsonArrayOfObjects(ObjectNode json, String[] keys, String[] data) {
